@@ -1,0 +1,67 @@
+<div class="container ">
+    <header class="d-flex flex-wrap align-items-center justify-content-center
+        justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0
+            text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img"
+                aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 link-light"><font
+                        style="vertical-align: inherit;"><font
+                            style="vertical-align: inherit;"><strong>Inicio</strong></font></font></a></li>
+            <li><a href="#" class="nav-link px-2 link-light"><font
+                        style="vertical-align: inherit;"><font
+                            style="vertical-align: inherit;"><strong>feactures</strong></font></font></a></li>
+            <li><a routerLink="/listar-cliente" class="nav-link px-2 link-light"><font
+                        style="vertical-align: inherit;"><font
+                            style="vertical-align: inherit;"><strong>Customers</strong></font></font></a></li>
+            <li><a href="#" class="nav-link px-2 link-light"><font
+                        style="vertical-align: inherit;"><font
+                            style="vertical-align: inherit;"><strong>Questions</strong></font></font></a></li>
+            <li><a href="#" class="nav-link px-2 link-light"><font
+                        style="vertical-align: inherit;"><font
+                            style="vertical-align: inherit;"><strong>About us</strong></font></font></a></li>
+        </ul>        
+    </header>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-sm-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">List of customers</span>
+                    <button routerLink="/crear-cliente" class="btn btn-success float-end">New</button>
+                    <table *ngIf="listClientes.length > 0" class="table table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Documento</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor=" let cliente of listClientes">
+                                <td>{{ cliente.nombre }}</td>
+                                <td>{{ cliente.documento }}</td>
+                                <td>{{ cliente.telefono }}</td>
+                                <td>{{ cliente.direccion }}</td>
+                                <td>{{ cliente.ciudad }}</td>
+                                <td>
+                                    <i [routerLink]="['/editar-cliente',cliente._id]" class="fa-solid fa-pen-to-square text-primary"></i>
+                                    <i (click)="eliminarCliente(cliente._id)" class="fa-solid fa-trash text-danger"></i>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <h5 style="text-align:start; margin-top: 10px;"  *ngIf="listClientes.length == 0">No hay clientes para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
